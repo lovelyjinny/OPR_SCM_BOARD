@@ -2,7 +2,6 @@
 <style>
 :root{--ink:#1f2733;--ink2:#5c6773;--mut:#98a1ac;--line:#e6e9ee;--bg:#eef0f4;--srf:#fff;
 --rd:#c0392b;--rdbg:#fdeeea;--am:#9a6b00;--ambg:#fcf3d7;--gn:#1e7a46;--gnbg:#e7f4ec;--bl:#2b6cb0;--blbg:#e8f0fa;
---pl:#7c3aed;--plbg:#f3e8fd;
 --c여성:#c2557e;--c남성:#2b6cb0;--c아동:#c58f1b;--c잡화:#38857a;}
 *{box-sizing:border-box}
 body{font-family:'Malgun Gothic','Segoe UI',sans-serif;margin:0;background:var(--bg);color:var(--ink);padding:20px 18px 60px;}
@@ -10,118 +9,176 @@ body{font-family:'Malgun Gothic','Segoe UI',sans-serif;margin:0;background:var(-
 .hero h1{color:#fff;margin:0;letter-spacing:-.3px;font-size:21px;font-weight:800;}
 .hero .sub{color:#9fb0cf;font-size:12.5px;margin:5px 0 0;}
 .hbtn{float:right;font-size:14px;font-weight:700;color:#fff;text-decoration:none;border:1.5px solid rgba(255,255,255,.75);background:rgba(255,255,255,.14);border-radius:18px;padding:7px 16px;margin-left:8px;}
-.box{background:var(--srf);border:1px solid var(--line);border-left:4px solid var(--bl);border-radius:12px;padding:16px 18px;margin:0 0 14px;box-shadow:0 1px 4px rgba(28,39,64,.06);}
-.box.amber{border-left-color:#e8b93c;} .box.blue{border-left-color:var(--bl);} .box.gray{border-left-color:#8a94a3;}
-h2{font-size:15.5px;margin:0 0 4px;font-weight:800;}
-.hint{font-size:11.5px;color:var(--mut);margin:0 0 12px;}
+.tabs{display:flex;gap:9px;margin:0 0 14px;flex-wrap:wrap;}
+.tab{border:1px solid var(--line);background:var(--srf);color:var(--ink2);border-radius:10px;padding:8px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 1px 4px rgba(28,39,64,.06);}
+.tab:hover{background:#f0f2f4;}
+.tab.on{border-color:var(--bl);color:var(--bl);box-shadow:0 0 0 2px var(--blbg);}
+.catsec{background:var(--srf);border:1px solid var(--line);border-left:4px solid var(--bl);border-radius:12px;padding:16px 18px;margin:0 0 14px;box-shadow:0 1px 4px rgba(28,39,64,.06);}
+.catsec[data-cat="여성"]{border-left-color:var(--c여성);} .catsec[data-cat="남성"]{border-left-color:var(--c남성);}
+.catsec[data-cat="아동"]{border-left-color:var(--c아동);} .catsec[data-cat="잡화"]{border-left-color:var(--c잡화);}
+h2{font-size:16px;margin:0 0 12px;font-weight:800;}
+h3{font-size:13.5px;margin:14px 0 6px;font-weight:800;color:var(--ink2);}
+.hint{font-size:11.5px;color:var(--mut);margin:0 0 8px;}
 table{border-collapse:collapse;width:100%;font-size:13px;border:1.5px solid #c9d0da;}
 th{font-size:11.5px;color:var(--ink2);font-weight:700;text-align:center;border:1px solid #d5dae2;padding:7px 8px;background:#f2f4f7;}
-td{border:1px solid #dde2e9;padding:8px 8px;text-align:center;vertical-align:middle;background:var(--srf);}
+td{border:1px solid #dde2e9;padding:7px 8px;text-align:center;vertical-align:middle;background:var(--srf);}
 td.l{text-align:left;font-weight:700;}
 td.n{font-variant-numeric:tabular-nums;}
-.cd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle;}
 .big{font-size:14px;font-weight:800;}
-.pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:20px;padding:2px 10px;white-space:nowrap;}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:20px;padding:2px 10px;white-space:nowrap;margin-left:6px;}
 .p-r{background:var(--rdbg);color:var(--rd);} .p-a{background:var(--ambg);color:var(--am);} .p-g{background:var(--gnbg);color:var(--gn);} .p-b{background:var(--blbg);color:var(--bl);}
 tr.urgent td{background:var(--ambg);}
 tr.late td{background:var(--rdbg);}
 .s2{font-size:11px;color:var(--mut);font-weight:400;}
+.ok-note{background:var(--gnbg);border:1px solid #b7dcc5;color:#155e37;border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600;}
 .leg{font-size:11.5px;color:var(--mut);margin-top:8px;line-height:1.8;}
+details{margin-top:6px;} details summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--ink2);}
 </style>
 <div class="hero"><h1>OPR 물류판 <span style="float:right"><a class="hbtn" href="index.html">⏱ SCM 대시보드 →</a><a class="hbtn" href="https://lovelyjinny.github.io/item-board/">📊 매입현황판 →</a></span></h1>
-<p class="sub">기준일 2026-07-31 · 물류팀 할 일: 필업(물류→매장) · 입고 예정 · 센터 작업</p></div>
-<div class="box amber"><h2>🟡 필업 요청 — 물류 → 매장 <span class="pill p-a">지금 0건</span> <span class="pill p-b">전체 0건</span></h2>
-<p class="hint">매장 재고로 못 버티는 아이템 — 물류 재고를 매장으로. 권장량 = 향후 4주 판매분 − 매장재고 (물류 보유 한도 내)</p>
-<table><tr><th style="text-align:left">아이템</th><th>물류재고</th><th>매장재고</th><th>매장 부족 시작</th><th>필업 권장량</th><th>상태</th></tr>
+<p class="sub">기준일 2026-07-31</p></div>
+<div class="tabs"><button class="tab on" data-cat="전체">전체</button><button class="tab" data-cat="여성">여성</button><button class="tab" data-cat="남성">남성</button><button class="tab" data-cat="아동">아동</button><button class="tab" data-cat="잡화">잡화</button></div>
+<div class="catsec" data-cat="여성"><h2>여성</h2>
+<h3>🟡 필업 — 물류 → 매장 보내기</h3>
+<p class="hint">매장 재고가 앞으로 4주 판매보다 적은 아이템 — 물류 창고 것을 미리 매장에 깔아야 함</p>
+<div class="ok-note">🟢 지금은 필업 필요 없음 — 매장 재고가 향후 4주 판매를 커버 (판매가 본격화되면 여기에 뜸)</div>
+<h3>🚚 입고 예정 — 오는 중인 물량</h3>
+<p class="hint">칸 = 그 주 센터 도착 예정 수량 (발주+매입확정, 국내 2주/해외 10주 추정)</p>
+<div style="overflow-x:auto"><table><tr><th style="text-align:left;min-width:120px">아이템</th><th style="min-width:62px">8월2주</th><th style="min-width:62px">8월3주</th><th style="min-width:62px">8월4주</th><th style="min-width:62px">8월5주</th><th style="min-width:62px">9월1주</th><th style="min-width:62px">9월2주</th><th style="min-width:62px">9월5주</th><th>합계</th></tr>
+<tr><td class="l">자켓 <span class="s2">혼합</span></td><td class="n">5,020</td><td class="n"></td><td class="n"></td><td class="n">152</td><td class="n"></td><td class="n"></td><td class="n">904</td><td class="n big">6,076</td></tr>
+<tr><td class="l">반팔티 <span class="s2">국내</span></td><td class="n">1,950</td><td class="n">1,914</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">419</td><td class="n big">4,283</td></tr>
+<tr><td class="l">반바지 <span class="s2">국내</span></td><td class="n">2,046</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">2,046</td></tr>
+<tr><td class="l">스웨터 <span class="s2">국내</span></td><td class="n">1,750</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1,750</td></tr>
+<tr><td class="l">면바지 <span class="s2">혼합</span></td><td class="n">1,281</td><td class="n"></td><td class="n"></td><td class="n">303</td><td class="n"></td><td class="n"></td><td class="n">152</td><td class="n big">1,736</td></tr>
+<tr><td class="l">PK티 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,190</td><td class="n big">1,190</td></tr>
+<tr><td class="l">조끼 <span class="s2">국내</span></td><td class="n">1,172</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1,172</td></tr>
+<tr><td class="l">맨투맨 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">977</td><td class="n big">977</td></tr>
+<tr><td class="l">스커트 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">495</td><td class="n"></td><td class="n big">495</td></tr>
+<tr><td class="l">점퍼 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n">495</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">495</td></tr>
+<tr><td class="l">긴팔티 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">293</td><td class="n"></td><td class="n"></td><td class="n big">293</td></tr>
+<tr><td class="l">원피스 <span class="s2">국내</span></td><td class="n"></td><td class="n">82</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">179</td><td class="n big">261</td></tr>
+<tr><td class="l">코트 <span class="s2">국내</span></td><td class="n"></td><td class="n">199</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">27</td><td class="n big">226</td></tr>
+<tr><td class="l">가디건 <span class="s2">국내</span></td><td class="n">175</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">175</td></tr>
+<tr><td class="l">후드티 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n">59</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">59</td></tr>
+<tr><td class="l">블라우스 <span class="s2">국내</span></td><td class="n">58</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">58</td></tr>
+<tr><td class="l">셔츠 <span class="s2">국내</span></td><td class="n"></td><td class="n">2</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1</td><td class="n big">3</td></tr>
+<tr><td class="l">청바지 <span class="s2">국내</span></td><td class="n">1</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1</td></tr>
 </table></div>
-<div class="box blue"><h2>🚚 입고 예정 — 발주됐고 오는 중 <span class="pill p-b">80,658장</span></h2>
-<p class="hint">칸 = 그 주에 센터 도착 예정 수량 (발주 + 매입확정, 국내 2주/해외 10주 추정) — 도착하면 검수·상품화 작업 발생</p>
-<div style="overflow-x:auto"><table><tr><th style="text-align:left;min-width:130px">아이템</th><th style="min-width:64px">8월2주</th><th style="min-width:64px">8월3주</th><th style="min-width:64px">8월4주</th><th style="min-width:64px">8월5주</th><th style="min-width:64px">9월1주</th><th style="min-width:64px">9월2주</th><th style="min-width:64px">9월3주</th><th style="min-width:64px">9월5주</th><th>합계</th></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 신발 <span class="s2">해외</span></td><td class="n">2,565</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,228</td><td class="n"></td><td class="n"></td><td class="n">4,272</td><td class="n big">8,065</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 면바지 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n">6,353</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">236</td><td class="n big">6,589</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 자켓 <span class="s2">혼합</span></td><td class="n">5,020</td><td class="n"></td><td class="n"></td><td class="n">152</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">904</td><td class="n big">6,076</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 쟈켓/점퍼 <span class="s2">국내</span></td><td class="n">129</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">3,983</td><td class="n"></td><td class="n"></td><td class="n">1,405</td><td class="n big">5,517</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 니트 <span class="s2">국내</span></td><td class="n">4,678</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">4,678</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 모자 <span class="s2">해외</span></td><td class="n">10</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">4,658</td><td class="n big">4,668</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 반팔티 <span class="s2">국내</span></td><td class="n">1,950</td><td class="n">1,914</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">419</td><td class="n big">4,283</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 가방 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">3,747</td><td class="n big">3,747</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 긴팔 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n">3,642</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">3,642</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 리빙(생활) <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">3,600</td><td class="n big">3,600</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 아우터 <span class="s2">국내</span></td><td class="n">2,539</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">2,539</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 반바지 <span class="s2">국내</span></td><td class="n">2,046</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">2,046</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 셔츠 <span class="s2">국내</span></td><td class="n">1,994</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1</td><td class="n big">1,995</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 ACC <span class="s2">국내</span></td><td class="n">795</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,181</td><td class="n big">1,976</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 언더웨어 <span class="s2">해외</span></td><td class="n">550</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">140</td><td class="n">1,220</td><td class="n big">1,910</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 스웨터 <span class="s2">국내</span></td><td class="n">1,750</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1,750</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 면바지 <span class="s2">혼합</span></td><td class="n">1,281</td><td class="n"></td><td class="n"></td><td class="n">303</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">152</td><td class="n big">1,736</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 맨투맨 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,374</td><td class="n"></td><td class="n"></td><td class="n">242</td><td class="n big">1,616</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 반팔 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,165</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">420</td><td class="n big">1,585</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 리빙(기타) <span class="s2">국내</span></td><td class="n">1,513</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1,513</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 후드티/후드집업 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,193</td><td class="n"></td><td class="n"></td><td class="n">149</td><td class="n big">1,342</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 PK티 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,190</td><td class="n big">1,190</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 조끼 <span class="s2">국내</span></td><td class="n">1,172</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1,172</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 맨투맨 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">977</td><td class="n big">977</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 홈웨어 <span class="s2">국내</span></td><td class="n">936</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">936</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 PQ티셔츠 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">797</td><td class="n big">797</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 모자 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">562</td><td class="n big">562</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 스커트 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">495</td><td class="n"></td><td class="n"></td><td class="n big">495</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 점퍼 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n">495</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">495</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 청바지 <span class="s2">국내</span></td><td class="n">472</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">472</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 베스트 <span class="s2">해외</span></td><td class="n">91</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">317</td><td class="n"></td><td class="n"></td><td class="n">1</td><td class="n big">409</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 벨트 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">374</td><td class="n big">374</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 긴팔티 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">293</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">293</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 정장바지 <span class="s2">국내</span></td><td class="n">291</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">291</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 원피스 <span class="s2">국내</span></td><td class="n"></td><td class="n">82</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">179</td><td class="n big">261</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 코트 <span class="s2">국내</span></td><td class="n"></td><td class="n">199</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">27</td><td class="n big">226</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 가방 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">217</td><td class="n big">217</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 가디건 <span class="s2">국내</span></td><td class="n">175</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">175</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 반바지 <span class="s2">국내</span></td><td class="n"></td><td class="n">96</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">38</td><td class="n big">134</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 가디건 <span class="s2">국내</span></td><td class="n">97</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">97</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 후드티 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n">59</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">59</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 블라우스 <span class="s2">국내</span></td><td class="n">58</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">58</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 머플러 <span class="s2">국내</span></td><td class="n">21</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">37</td><td class="n big">58</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 지갑 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">33</td><td class="n big">33</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 셔츠 <span class="s2">국내</span></td><td class="n"></td><td class="n">2</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1</td><td class="n big">3</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 청바지 <span class="s2">국내</span></td><td class="n">1</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">1</td></tr>
-</table></div></div>
-<div class="box gray"><h2>🏭 센터 작업 중 — 입고됐고 출고 전 <span class="pill p-b">108,768장 · 28건</span> <span class="pill p-r">14일+ 19건</span></h2>
-<p class="hint">물류 칸반(구글시트) 실시간 · 아이템 분해 = 발주관리 브랜드별 아이템 구성비 (근사) · 4월 이후 입고분</p>
-<h2 style="font-size:13.5px;margin:14px 0 6px">아이템별 요약</h2>
+<h3>🏭 센터 작업 중 — 입고됐고 출고 전</h3>
+<p class="hint">물류 칸반 실시간 · 아이템 분해 = 발주관리 브랜드별 구성비(근사)</p>
 <table><tr><th style="text-align:left">아이템</th><th>검수 대기</th><th>상품화 중</th><th>출고 대기</th><th>합계</th></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 맨투맨</td><td class="n">0</td><td class="n">0</td><td class="n">3,685</td><td class="n big">3,685</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 면바지</td><td class="n">0</td><td class="n">0</td><td class="n">3,624</td><td class="n big">3,624</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 원피스</td><td class="n">0</td><td class="n">0</td><td class="n">2,466</td><td class="n big">2,466</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 패딩다운</td><td class="n">0</td><td class="n">0</td><td class="n">2,438</td><td class="n big">2,438</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 스웨터</td><td class="n">15</td><td class="n">0</td><td class="n">1,927</td><td class="n big">1,942</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 ACC</td><td class="n">0</td><td class="n">0</td><td class="n">1,505</td><td class="n big">1,505</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 재킷</td><td class="n">0</td><td class="n">0</td><td class="n">1,403</td><td class="n big">1,403</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 면바지</td><td class="n">611</td><td class="n">0</td><td class="n">634</td><td class="n big">1,245</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 긴팔티</td><td class="n">0</td><td class="n">0</td><td class="n">1,127</td><td class="n big">1,127</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 블라우스</td><td class="n">0</td><td class="n">0</td><td class="n">1,056</td><td class="n big">1,056</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 가디건</td><td class="n">0</td><td class="n">0</td><td class="n">1,034</td><td class="n big">1,034</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 쟈켓/점퍼</td><td class="n">885</td><td class="n">0</td><td class="n">0</td><td class="n big">886</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 신발</td><td class="n">820</td><td class="n">0</td><td class="n">1</td><td class="n big">821</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 자켓</td><td class="n">581</td><td class="n">0</td><td class="n">233</td><td class="n big">814</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 반팔티</td><td class="n">0</td><td class="n">0</td><td class="n">693</td><td class="n big">693</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 가방</td><td class="n">60</td><td class="n">0</td><td class="n">628</td><td class="n big">688</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 스커트</td><td class="n">406</td><td class="n">0</td><td class="n">257</td><td class="n big">662</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 맨투맨</td><td class="n">567</td><td class="n">0</td><td class="n">1</td><td class="n big">568</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 가디건</td><td class="n">0</td><td class="n">0</td><td class="n">540</td><td class="n big">540</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 ETC</td><td class="n">0</td><td class="n">0</td><td class="n">535</td><td class="n big">535</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 맨투맨</td><td class="n">476</td><td class="n">0</td><td class="n">58</td><td class="n big">533</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 셔츠블라우스</td><td class="n">0</td><td class="n">0</td><td class="n">508</td><td class="n big">508</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 면바지</td><td class="n">506</td><td class="n">0</td><td class="n">0</td><td class="n big">506</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 베스트</td><td class="n">0</td><td class="n">0</td><td class="n">445</td><td class="n big">445</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c아동)"></span>아동 니트</td><td class="n">0</td><td class="n">0</td><td class="n">350</td><td class="n big">350</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 원피스</td><td class="n">0</td><td class="n">0</td><td class="n">339</td><td class="n big">339</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c잡화)"></span>잡화 모자</td><td class="n">230</td><td class="n">0</td><td class="n">1</td><td class="n big">231</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c남성)"></span>남성 후드티/후드집업</td><td class="n">228</td><td class="n">0</td><td class="n">0</td><td class="n big">228</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 PK티</td><td class="n">174</td><td class="n">0</td><td class="n">0</td><td class="n big">174</td></tr>
-<tr><td class="l"><span class="cd" style="background:var(--c여성)"></span>여성 반바지</td><td class="n">0</td><td class="n">0</td><td class="n">171</td><td class="n big">171</td></tr>
+<tr><td class="l">스웨터</td><td class="n">15</td><td class="n">0</td><td class="n">1,927</td><td class="n big">1,942</td></tr>
+<tr><td class="l">면바지</td><td class="n">611</td><td class="n">0</td><td class="n">634</td><td class="n big">1,245</td></tr>
+<tr><td class="l">블라우스</td><td class="n">0</td><td class="n">0</td><td class="n">1,056</td><td class="n big">1,056</td></tr>
+<tr><td class="l">가디건</td><td class="n">0</td><td class="n">0</td><td class="n">1,034</td><td class="n big">1,034</td></tr>
+<tr><td class="l">자켓</td><td class="n">581</td><td class="n">0</td><td class="n">233</td><td class="n big">814</td></tr>
+<tr><td class="l">반팔티</td><td class="n">0</td><td class="n">0</td><td class="n">693</td><td class="n big">693</td></tr>
+<tr><td class="l">스커트</td><td class="n">406</td><td class="n">0</td><td class="n">257</td><td class="n big">662</td></tr>
+<tr><td class="l">맨투맨</td><td class="n">476</td><td class="n">0</td><td class="n">58</td><td class="n big">533</td></tr>
+<tr><td class="l">원피스</td><td class="n">0</td><td class="n">0</td><td class="n">339</td><td class="n big">339</td></tr>
+<tr><td class="l">PK티</td><td class="n">174</td><td class="n">0</td><td class="n">0</td><td class="n big">174</td></tr>
+<tr><td class="l">반바지</td><td class="n">0</td><td class="n">0</td><td class="n">171</td><td class="n big">171</td></tr>
+<tr><td class="l">조끼</td><td class="n">0</td><td class="n">0</td><td class="n">169</td><td class="n big">169</td></tr>
+<tr><td class="l">점퍼</td><td class="n">95</td><td class="n">0</td><td class="n">55</td><td class="n big">150</td></tr>
+<tr><td class="l">셔츠</td><td class="n">7</td><td class="n">0</td><td class="n">90</td><td class="n big">97</td></tr>
+<tr><td class="l">청바지</td><td class="n">0</td><td class="n">0</td><td class="n">93</td><td class="n big">93</td></tr>
+<tr><td class="l">후드티</td><td class="n">65</td><td class="n">0</td><td class="n">0</td><td class="n big">65</td></tr>
+<tr><td class="l">코트</td><td class="n">0</td><td class="n">0</td><td class="n">13</td><td class="n big">13</td></tr>
 </table>
-<p class="hint" style="margin-top:6px">⚠️ 아이템 미매칭(발주관리에 브랜드 없음): 76,438장 — 보그너 17,000, 서양_리틀그라운드 10,785, 키플링 9,862, 레시피_노브아카이브FW 8,481, 토마스힐_FW 7,491, 데이슨_잡화(시즌잡화) 5,988</p>
-<h2 style="font-size:13.5px;margin:14px 0 6px">브랜드 상세 (오래된 순)</h2>
-<table><tr><th style="text-align:left">브랜드</th><th style="text-align:left">업체</th><th>수량</th><th>실입고일</th><th>경과</th><th>현재 단계</th></tr>
+</div>
+<div class="catsec" data-cat="남성"><h2>남성</h2>
+<h3>🟡 필업 — 물류 → 매장 보내기</h3>
+<p class="hint">매장 재고가 앞으로 4주 판매보다 적은 아이템 — 물류 창고 것을 미리 매장에 깔아야 함</p>
+<div class="ok-note">🟢 지금은 필업 필요 없음 — 매장 재고가 향후 4주 판매를 커버 (판매가 본격화되면 여기에 뜸)</div>
+<h3>🚚 입고 예정 — 오는 중인 물량</h3>
+<p class="hint">칸 = 그 주 센터 도착 예정 수량 (발주+매입확정, 국내 2주/해외 10주 추정)</p>
+<div style="overflow-x:auto"><table><tr><th style="text-align:left;min-width:120px">아이템</th><th style="min-width:62px">8월2주</th><th style="min-width:62px">8월3주</th><th style="min-width:62px">8월4주</th><th style="min-width:62px">8월5주</th><th style="min-width:62px">9월1주</th><th style="min-width:62px">9월5주</th><th>합계</th></tr>
+<tr><td class="l">신발 <span class="s2">해외</span></td><td class="n">2,565</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,228</td><td class="n">4,272</td><td class="n big">8,065</td></tr>
+<tr><td class="l">면바지 <span class="s2">혼합</span></td><td class="n"></td><td class="n"></td><td class="n">6,353</td><td class="n"></td><td class="n"></td><td class="n">236</td><td class="n big">6,589</td></tr>
+<tr><td class="l">쟈켓/점퍼 <span class="s2">국내</span></td><td class="n">129</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">3,983</td><td class="n">1,405</td><td class="n big">5,517</td></tr>
+<tr><td class="l">니트 <span class="s2">국내</span></td><td class="n">4,678</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">4,678</td></tr>
+<tr><td class="l">긴팔 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n">3,642</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">3,642</td></tr>
+<tr><td class="l">아우터 <span class="s2">국내</span></td><td class="n">2,539</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">2,539</td></tr>
+<tr><td class="l">셔츠 <span class="s2">국내</span></td><td class="n">1,994</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1</td><td class="n big">1,995</td></tr>
+<tr><td class="l">맨투맨 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,374</td><td class="n">242</td><td class="n big">1,616</td></tr>
+<tr><td class="l">반팔 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,165</td><td class="n"></td><td class="n">420</td><td class="n big">1,585</td></tr>
+<tr><td class="l">후드티/후드집업 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">1,193</td><td class="n">149</td><td class="n big">1,342</td></tr>
+<tr><td class="l">PQ티셔츠 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">797</td><td class="n big">797</td></tr>
+<tr><td class="l">모자 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">562</td><td class="n big">562</td></tr>
+<tr><td class="l">청바지 <span class="s2">국내</span></td><td class="n">472</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">472</td></tr>
+<tr><td class="l">베스트 <span class="s2">해외</span></td><td class="n">91</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">317</td><td class="n">1</td><td class="n big">409</td></tr>
+<tr><td class="l">정장바지 <span class="s2">국내</span></td><td class="n">291</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">291</td></tr>
+<tr><td class="l">가방 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">217</td><td class="n big">217</td></tr>
+<tr><td class="l">반바지 <span class="s2">국내</span></td><td class="n"></td><td class="n">96</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">38</td><td class="n big">134</td></tr>
+<tr><td class="l">가디건 <span class="s2">국내</span></td><td class="n">97</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n big">97</td></tr>
+</table></div>
+<h3>🏭 센터 작업 중 — 입고됐고 출고 전</h3>
+<p class="hint">물류 칸반 실시간 · 아이템 분해 = 발주관리 브랜드별 구성비(근사)</p>
+<table><tr><th style="text-align:left">아이템</th><th>검수 대기</th><th>상품화 중</th><th>출고 대기</th><th>합계</th></tr>
+<tr><td class="l">쟈켓/점퍼</td><td class="n">885</td><td class="n">0</td><td class="n">0</td><td class="n big">886</td></tr>
+<tr><td class="l">신발</td><td class="n">820</td><td class="n">0</td><td class="n">1</td><td class="n big">821</td></tr>
+<tr><td class="l">맨투맨</td><td class="n">567</td><td class="n">0</td><td class="n">1</td><td class="n big">568</td></tr>
+<tr><td class="l">면바지</td><td class="n">506</td><td class="n">0</td><td class="n">0</td><td class="n big">506</td></tr>
+<tr><td class="l">후드티/후드집업</td><td class="n">228</td><td class="n">0</td><td class="n">0</td><td class="n big">228</td></tr>
+<tr><td class="l">반팔</td><td class="n">49</td><td class="n">0</td><td class="n">2</td><td class="n big">51</td></tr>
+<tr><td class="l">베스트</td><td class="n">49</td><td class="n">0</td><td class="n">0</td><td class="n big">49</td></tr>
+<tr><td class="l">PQ티셔츠</td><td class="n">31</td><td class="n">0</td><td class="n">0</td><td class="n big">31</td></tr>
+<tr><td class="l">셔츠</td><td class="n">30</td><td class="n">0</td><td class="n">0</td><td class="n big">30</td></tr>
+</table>
+</div>
+<div class="catsec" data-cat="아동"><h2>아동</h2>
+<h3>🟡 필업 — 물류 → 매장 보내기</h3>
+<p class="hint">매장 재고가 앞으로 4주 판매보다 적은 아이템 — 물류 창고 것을 미리 매장에 깔아야 함</p>
+<div class="ok-note">🟢 지금은 필업 필요 없음 — 매장 재고가 향후 4주 판매를 커버 (판매가 본격화되면 여기에 뜸)</div>
+<h3>🚚 입고 예정 — 오는 중인 물량</h3>
+<div class="ok-note">입고 예정 물량 없음</div>
+<h3>🏭 센터 작업 중 — 입고됐고 출고 전</h3>
+<p class="hint">물류 칸반 실시간 · 아이템 분해 = 발주관리 브랜드별 구성비(근사)</p>
+<table><tr><th style="text-align:left">아이템</th><th>검수 대기</th><th>상품화 중</th><th>출고 대기</th><th>합계</th></tr>
+<tr><td class="l">맨투맨</td><td class="n">0</td><td class="n">0</td><td class="n">3,685</td><td class="n big">3,685</td></tr>
+<tr><td class="l">면바지</td><td class="n">0</td><td class="n">0</td><td class="n">3,624</td><td class="n big">3,624</td></tr>
+<tr><td class="l">원피스</td><td class="n">0</td><td class="n">0</td><td class="n">2,466</td><td class="n big">2,466</td></tr>
+<tr><td class="l">패딩다운</td><td class="n">0</td><td class="n">0</td><td class="n">2,438</td><td class="n big">2,438</td></tr>
+<tr><td class="l">ACC</td><td class="n">0</td><td class="n">0</td><td class="n">1,505</td><td class="n big">1,505</td></tr>
+<tr><td class="l">재킷</td><td class="n">0</td><td class="n">0</td><td class="n">1,403</td><td class="n big">1,403</td></tr>
+<tr><td class="l">긴팔티</td><td class="n">0</td><td class="n">0</td><td class="n">1,127</td><td class="n big">1,127</td></tr>
+<tr><td class="l">가디건</td><td class="n">0</td><td class="n">0</td><td class="n">540</td><td class="n big">540</td></tr>
+<tr><td class="l">ETC</td><td class="n">0</td><td class="n">0</td><td class="n">535</td><td class="n big">535</td></tr>
+<tr><td class="l">셔츠블라우스</td><td class="n">0</td><td class="n">0</td><td class="n">508</td><td class="n big">508</td></tr>
+<tr><td class="l">베스트</td><td class="n">0</td><td class="n">0</td><td class="n">445</td><td class="n big">445</td></tr>
+<tr><td class="l">니트</td><td class="n">0</td><td class="n">0</td><td class="n">350</td><td class="n big">350</td></tr>
+<tr><td class="l">코트</td><td class="n">0</td><td class="n">0</td><td class="n">130</td><td class="n big">130</td></tr>
+<tr><td class="l">가방</td><td class="n">0</td><td class="n">0</td><td class="n">110</td><td class="n big">110</td></tr>
+</table>
+</div>
+<div class="catsec" data-cat="잡화"><h2>잡화</h2>
+<h3>🟡 필업 — 물류 → 매장 보내기</h3>
+<p class="hint">매장 재고가 앞으로 4주 판매보다 적은 아이템 — 물류 창고 것을 미리 매장에 깔아야 함</p>
+<div class="ok-note">🟢 지금은 필업 필요 없음 — 매장 재고가 향후 4주 판매를 커버 (판매가 본격화되면 여기에 뜸)</div>
+<h3>🚚 입고 예정 — 오는 중인 물량</h3>
+<p class="hint">칸 = 그 주 센터 도착 예정 수량 (발주+매입확정, 국내 2주/해외 10주 추정)</p>
+<div style="overflow-x:auto"><table><tr><th style="text-align:left;min-width:120px">아이템</th><th style="min-width:62px">8월2주</th><th style="min-width:62px">9월3주</th><th style="min-width:62px">9월5주</th><th>합계</th></tr>
+<tr><td class="l">모자 <span class="s2">해외</span></td><td class="n">10</td><td class="n"></td><td class="n">4,658</td><td class="n big">4,668</td></tr>
+<tr><td class="l">가방 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n">3,747</td><td class="n big">3,747</td></tr>
+<tr><td class="l">리빙(생활) <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n">3,600</td><td class="n big">3,600</td></tr>
+<tr><td class="l">ACC <span class="s2">국내</span></td><td class="n">795</td><td class="n"></td><td class="n">1,181</td><td class="n big">1,976</td></tr>
+<tr><td class="l">언더웨어 <span class="s2">해외</span></td><td class="n">550</td><td class="n">140</td><td class="n">1,220</td><td class="n big">1,910</td></tr>
+<tr><td class="l">리빙(기타) <span class="s2">국내</span></td><td class="n">1,513</td><td class="n"></td><td class="n"></td><td class="n big">1,513</td></tr>
+<tr><td class="l">홈웨어 <span class="s2">국내</span></td><td class="n">936</td><td class="n"></td><td class="n"></td><td class="n big">936</td></tr>
+<tr><td class="l">벨트 <span class="s2">해외</span></td><td class="n"></td><td class="n"></td><td class="n">374</td><td class="n big">374</td></tr>
+<tr><td class="l">머플러 <span class="s2">국내</span></td><td class="n">21</td><td class="n"></td><td class="n">37</td><td class="n big">58</td></tr>
+<tr><td class="l">지갑 <span class="s2">국내</span></td><td class="n"></td><td class="n"></td><td class="n">33</td><td class="n big">33</td></tr>
+</table></div>
+<h3>🏭 센터 작업 중 — 입고됐고 출고 전</h3>
+<p class="hint">물류 칸반 실시간 · 아이템 분해 = 발주관리 브랜드별 구성비(근사)</p>
+<table><tr><th style="text-align:left">아이템</th><th>검수 대기</th><th>상품화 중</th><th>출고 대기</th><th>합계</th></tr>
+<tr><td class="l">가방</td><td class="n">60</td><td class="n">0</td><td class="n">628</td><td class="n big">688</td></tr>
+<tr><td class="l">모자</td><td class="n">230</td><td class="n">0</td><td class="n">1</td><td class="n big">231</td></tr>
+<tr><td class="l">벨트</td><td class="n">59</td><td class="n">0</td><td class="n">0</td><td class="n big">59</td></tr>
+<tr><td class="l">머플러</td><td class="n">41</td><td class="n">0</td><td class="n">0</td><td class="n big">41</td></tr>
+</table>
+</div>
+<div class="catsec" data-cat="공통"><h2>📦 센터 작업 브랜드 상세 <span class="pill p-b">108,768장 · 28건</span> <span class="pill p-r">14일+ 19건</span></h2>
+<table><tr><th style="text-align:left">브랜드</th><th style="text-align:left">업체</th><th>수량</th><th>실입고일</th><th>경과</th><th>단계</th></tr>
 <tr class="late"><td class="l">ck (모자)</td><td style="text-align:left" class="s2">OBA</td><td class="n">612</td><td>04-10</td><td class="n big">112일</td><td>출고 대기</td></tr>
 <tr class="late"><td class="l">레시피_노브아카이브FW</td><td style="text-align:left" class="s2">OAY</td><td class="n">8,481</td><td>05-18</td><td class="n big">74일</td><td>출고 대기</td></tr>
 <tr class="late"><td class="l">서양_알로봇</td><td style="text-align:left" class="s2"></td><td class="n">2,820</td><td>06-22</td><td class="n big">39일</td><td>출고 대기</td></tr>
@@ -150,5 +207,18 @@ tr.late td{background:var(--rdbg);}
 <tr><td class="l">파자마_잡화</td><td style="text-align:left" class="s2"></td><td class="n">1,900</td><td>07-27</td><td class="n big">4일</td><td>출고 대기</td></tr>
 <tr><td class="l">양말_잡화</td><td style="text-align:left" class="s2"></td><td class="n">1,894</td><td>07-28</td><td class="n big">3일</td><td>검수 대기</td></tr>
 <tr><td class="l">엠제이_가방</td><td style="text-align:left" class="s2"></td><td class="n">870</td><td>07-30</td><td class="n big">1일</td><td>검수 대기</td></tr>
-</table></div>
-<p class="leg">필업 = SCM 대시보드의 🟡 신호와 동일 기준 · 입고 예정 도착주는 리드타임 추정치 · 센터 작업은 MDP 판 기준(갱신 주기 다를 수 있음)</p>
+</table>
+<p class="hint" style="margin-top:8px">⚠️ 아이템 미매칭(발주관리에 브랜드 없음): 76,438장 — 보그너 17,000, 서양_리틀그라운드 10,785, 키플링 9,862, 레시피_노브아카이브FW 8,481, 토마스힐_FW 7,491, 데이슨_잡화(시즌잡화) 5,988, 서양_알로봇 2,820, 잡화_모자류 2,371</p>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    var c=b.dataset.cat;
+    document.querySelectorAll('.catsec').forEach(function(s){
+      s.style.display=(c==='전체'||s.dataset.cat===c||s.dataset.cat==='공통')?'':'none';
+    });
+  });
+});
+</script>
