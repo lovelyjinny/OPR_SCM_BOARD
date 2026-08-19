@@ -751,7 +751,7 @@ document.querySelectorAll('.pbtn').forEach(function(b){
       tl.style.opacity=(segs.length===1 && p!=='all')?'0.45':'';
     });
     var hint=document.getElementById('phint');
-    if(hint) hint.textContent=(p==='all')?'시간축·예상판매량·주차 시계열 = 시즌 전체':'시간축·예상판매량·주차 시계열 = 선택 구간 · 재고·발주잔·신호등 판정은 시즌 전체 기준';
+    if(hint) hint.textContent=(p==='all')?'시간축·예상판매량·주차 시계열 = 시즌 전체':'시간축·예상판매량·주차 시계열 = 선택 구간 · 재고·미입고·신호등 판정은 시즌 전체 기준';
     document.querySelectorAll('tr.row').forEach(function(tr){
       var cell=tr.querySelector('td.pdm'); if(!cell) return;
       if(!cell.dataset.full) cell.dataset.full=cell.innerHTML;   /* 최초 클릭 시 원본(추세+의지 분해 포함) 보존 */
