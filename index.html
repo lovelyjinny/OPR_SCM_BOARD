@@ -781,9 +781,9 @@ document.querySelectorAll('tr.row').forEach(function(tr){
   });
 });
 document.querySelectorAll('.tab').forEach(function(b){
-  if(b.classList.contains('pbtn')||b.classList.contains('fbtn')) return;
+  if(b.classList.contains('pbtn')||b.classList.contains('fbtn')||b.classList.contains('vbtn')||b.classList.contains('psort')) return;   /* 뷰 전환·PLC 정렬 버튼은 카테고리 필터 아님 */
   b.addEventListener('click',function(){
-    document.querySelectorAll('.tab:not(.pbtn):not(.fbtn)').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.tab:not(.pbtn):not(.fbtn):not(.vbtn):not(.psort)').forEach(function(x){x.classList.remove('on')});
     b.classList.add('on');
     var c=b.dataset.cat;
     document.querySelectorAll('.catsec').forEach(function(s){
