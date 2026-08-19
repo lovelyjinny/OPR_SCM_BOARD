@@ -1,0 +1,57 @@
+<!doctype html><html lang=ko><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>OPR SCM 판 — 판정 기준 1장</title>
+<style>
+:root{--ink:#1f2733;--ink2:#5c6773;--mut:#98a1ac;--line:#e6e9ee;--bg:#eef0f4;--srf:#fff;--rd:#c0392b;--rdbg:#fdeeea;--am:#9a6b00;--ambg:#fcf3d7;--gn:#1e7a46;--gnbg:#e7f4ec;--bl:#2b6cb0;--blbg:#e8f0fa}
+*{box-sizing:border-box} body{font-family:'Malgun Gothic','Segoe UI',sans-serif;margin:0;background:var(--bg);color:var(--ink);padding:20px 18px 60px;font-size:15px;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto}
+.hero{background:linear-gradient(135deg,#1c2740 0%,#27395e 55%,#33507e 100%);color:#fff;border-radius:14px;padding:18px 22px;margin-bottom:14px}
+.hero h1{margin:0;font-size:22px;font-weight:800} .hero .sub{color:#9fb0cf;font-size:13.5px;margin-top:5px}
+.hero a{font-size:13px;font-weight:700;color:#fff;text-decoration:none;border:1.5px solid rgba(255,255,255,.75);background:rgba(255,255,255,.14);border-radius:18px;padding:6px 14px;margin-left:6px}
+.box{background:var(--srf);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 12px;border-left:4px solid var(--line)}
+h2{font-size:17px;margin:0 0 10px} .s2{font-size:12.5px;color:var(--mut);font-weight:400}
+table{border-collapse:collapse;width:100%;font-size:14.5px} th{font-size:12.5px;color:var(--mut);font-weight:600;border-bottom:1.5px solid var(--line);padding:7px 8px;text-align:left} td{border-bottom:1px solid var(--line);padding:8px 8px;vertical-align:top}
+.pill{display:inline-block;font-size:13px;font-weight:700;border-radius:20px;padding:3px 11px;white-space:nowrap}
+.r{background:var(--rdbg);color:var(--rd)} .a{background:var(--ambg);color:var(--am)} .b{background:var(--blbg);color:var(--bl)} .g{background:var(--gnbg);color:var(--gn)} .k{background:#2d3436;color:#fff}
+.src{font-size:13px;color:var(--ink2)} code{background:#f0f2f4;border-radius:4px;padding:1px 5px;font-size:13px}
+ul{margin:4px 0 0 18px;padding:0}
+</style><body><div class="wrap">
+<div class="hero"><h1>OPR SCM 판 — 판정 기준 1장 <span class="s2" style="color:#9fb0cf">(CQO 질문 ⑥ "파랑/빨강/노랑은 어떻게 판정하나")</span>
+<span style="float:right"><a href="https://lovelyjinny.github.io/OPR_SCM_BOARD/">⏱ SCM 대시보드</a><a href="https://lovelyjinny.github.io/OPR_LOGISTICS_BOARD/">🚚 물류판</a><a href="https://lovelyjinny.github.io/OPR_STORE_BOARD/">🏬 매장판</a><a href="https://lovelyjinny.github.io/item-board/">📊 매입현황판</a><a href="https://lovelyjinny.github.io/OPR_FEEDBACK_BOARD/">📋 피드백판</a></span></h1>
+<div class="sub">모든 색은 <b>아래 한 가지 계산(주별 공급 vs 주별 예상판매)</b>에서 나오고, 임계값은 회사/실장님이 정한 것만 씁니다. 기준이 바뀌면 이 장과 코드 상수만 바꾸면 됩니다.</div></div>
+
+<div class="box" style="border-left-color:#27395e"><h2>0. 공통 계산 — "언제 바닥나나"</h2>
+<table><tr><th style="width:22%">항목</th><th>정의</th><th style="width:28%">원천</th></tr>
+<tr><td><b>예상판매(시즌 총량)</b></td><td><b>추세 + 의지</b>. 추세=작년 동기간(25.7~26.2) 그 아이템 매장 실판매(물류 매각·3,000원 미만 떨이 제외)를 같은 주차로 옮긴 것 · 의지=회사 OTB 계획매입액 ÷ 평균 발주단가 × 시즌말 목표판매율 90%(회사 KPI) ÷ 추세 = 배율(0.8~5.0 밖이면 보류하고 카테고리 성장률). 수기 의지값이 있으면 최우선</td><td class="src">DB daily_sales · OTB 계획(RECAP 등) · 발주관리 단가 · 의지값.xlsx</td></tr>
+<tr><td><b>주별 분포 (PLC)</b></td><td>총량을 <b>제품 수명주기 형상</b>으로 주차에 배분: 작년 주별 판매를 3주 평활 · 작년 행사주(수량 급증+단가 하락) 평탄화 · 작년 300장 미만은 카테고리 형상. 9월부터는 <b>러닝 보정</b>(실판매÷계획판매, 0.3~2.0)로 남은 수요 조정</td><td class="src">_판_수지시뮬.py PLC 블록 · 예상판매량 클릭 팝업</td></tr>
+<tr><td><b>공급 스케줄</b></td><td>매장재고=즉시 · 물류재고=+2주(물류→매장) · 발주잔·품의 확약=도착주(상품판 입고계획 → MDP 예정입고일 → 품의 목표입고일 → 리드타임 국내 2주/해외 10주)+2주</td><td class="src">재고_오늘 · 발주관리 · MDP · 품의</td></tr>
+<tr><td><b>진열선</b></td><td>향후 2주 판매분(DISP_WKS=2). 매장 재고가 이 아래면 팔 게 안 깔린 상태=기회로스</td><td class="src">설정값</td></tr></table></div>
+
+<div class="box" style="border-left-color:var(--rd)"><h2>1. 아이템 신호등 (SCM 대시보드 · 물류판 MD 판단표 · 매입현황판 공통)</h2>
+<table><tr><th style="width:18%">색</th><th>판정 (주별 시뮬 결과)</th><th style="width:30%">뜻 / 누가 움직이나</th></tr>
+<tr><td><span class="pill r">🔴 매입 필요</span></td><td>시즌 중 어느 주에 <b>누적 수요 + 진열선 &gt; 총 공급(매장+물류+발주잔+확약)</b> — 물류까지 바닥. 부족량 = 그 이후 수요 합. 발주 마감 = 바닥 주 − 국내 4주 / 해외 12주</td><td>MD: 매입(발주). 깃발 전에 결정해야 제때 도착</td></tr>
+<tr><td><span class="pill a">🟡 필업</span></td><td>총 공급은 충분하지만 <b>매장 재고만</b>으로 2주 진열선을 못 지키는 주가 있음(물류에 재고 있음). 보낼 양 = 도착 시점(2주 뒤)부터 4주 수요 − 매장 보유, 물류 보유 한도</td><td>물류: 매장으로 필업</td></tr>
+<tr><td><span class="pill b">⚠️ 과잉</span></td><td><b>총 공급 ÷ 남은 시즌 수요 ≥ 1.6</b> 이고 남은 수요 200장 이상 — 시즌 끝까지 팔아도 남음. <span class="s2">(실장님 08-04 회의 지시 기준 1.6배)</span></td><td>MD: 발주잔 조정·보류, 물류: 회수/마크다운 검토</td></tr>
+<tr><td><span class="pill g">🟢 OK</span></td><td>위 셋 다 아님</td><td>—</td></tr>
+<tr><td><span class="pill k">🔵 과잉인데 매입 중</span></td><td>전사 공급이 수요의 1.5배↑인데 이번 주 발주가 늘고 있음 (매입현황판 배지)</td><td>MD: 계획 재검토(원피스 사례)</td></tr></table>
+<p class="src" style="margin:8px 0 0">※ 숫자 클릭 = 브랜드별 분해. 드릴다운 = 주별 예상재고·진열선·예상판매(PLC).</p></div>
+
+<div class="box" style="border-left-color:var(--am)"><h2>2. 매입현황판 — 진척·조치신호</h2>
+<table><tr><th style="width:18%">표시</th><th>기준</th></tr>
+<tr><td><b>🔴 긴급</b></td><td>시즌 전체 진척(매입÷계획)도, 현시점 충족률(계절 월 비중으로 환산한 지금 필요량 대비)도 부족</td></tr>
+<tr><td><b>🟠 시점부족</b></td><td>총량은 확보됐으나 지금 급한 물량만 부족</td></tr>
+<tr><td><b>🟣 계획 재검토</b></td><td>계획상 부족이지만 이월 포함 공급이 수요의 1.5배↑ — 매입 말고 계획 조정</td></tr>
+<tr><td><b>🟢 조치중 / 🟡 정체 / ⛔ 방치</b></td><td>부족 아이템의 <b>주간 발주 증가</b>가 있음 / 0 / 2주 연속 0(에스컬레이션)</td></tr>
+<tr><td><b>조치 기록 판정</b></td><td>기록 시점 매입 대비 다음 갱신 때 매입이 늘면 ✅, 기록이 직전 측정 이후면 ⏳ 다음 갱신 확인, 그 외 ⚠️ 증가 없음 — 같은 축(발주 증가)</td></tr></table></div>
+
+<div class="box" style="border-left-color:var(--bl)"><h2>3. 매장판</h2>
+<table><tr><th style="width:18%">표시</th><th>기준</th></tr>
+<tr><td><b>빨강 칸</b></td><td>그 매장 그 아이템 가용재고(26FW+이월유효) &lt; 향후 <b>2주</b> 예상판매(진열선) · 노이즈 컷 4주 수요 10장↑</td></tr>
+<tr><td><b>노랑 칸</b></td><td>&lt; 향후 <b>4주</b> 예상판매</td></tr>
+<tr><td><b>파랑(과잉)</b></td><td>가용재고 &gt; 남은 시즌 예상판매 × 1.6 (SCM 전사 판과 동일)</td></tr>
+<tr><td><b>매장 수요</b></td><td>SCM 아이템 예상판매(위 0) × 그 매장 몫(작년 비중 · 신규/규모 보정 · 소표본은 카테고리 몫)</td></tr>
+<tr><td><b>시즌 커버(주)</b></td><td>가용재고 ÷ 남은 시즌 주평균 예상판매 — 12주 미만 빨강·16주 미만 노랑 (참고치, 회사 재고일수 공식과 다름)</td></tr></table></div>
+
+<div class="box" style="border-left-color:var(--gn)"><h2>4. 회사 공식 그대로 쓰는 지표 (판이 새로 정의하지 않음)</h2>
+<ul><li><b>판매율(소진율)</b> = 소진재고액 ÷ (소진재고액 + 잔여재고액)</li><li><b>매총율</b> = 1 − (매출원가 − 환입) ÷ (총매출 ÷ 1.1)</li><li><b>재고일수</b> = 365 ÷ [(누적소진 ÷ 월별비중) ÷ 평균재고]</li><li><b>정판율</b> = 정상판매 ÷ 총입고(둘 다 정상가)</li></ul>
+<p class="src" style="margin:8px 0 0">설정값 위치: <code>_판_수지시뮬.py</code> DOM_TOT 4 / IMP_TOT 12 / BACK(IN-LAND 2·OCEAN 10·AIR 6) / LOGI2STORE 2 / DISP_WKS 2 / SEASON_SELL_TGT 0.90 / PLC_EVENT_Q 1.8 · PLC_EVENT_ASP 0.85 · PLC_MIN_N 300 · 과잉 1.6 — 회의에서 바꾸면 숫자만 교체</p></div>
+<p class="src">갱신 2026-08-19 · 이 장은 판정 로직의 설명이며, 임계값(1.6배·2주 진열선·12/16주 커버 등) 자체의 타당성은 원팀 합의 사항.</p>
+</div></body></html>
