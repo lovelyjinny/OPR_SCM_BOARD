@@ -646,6 +646,7 @@ document.querySelectorAll('.tab').forEach(function(b){
   });
 });
 // 뷰 전환: 아이템 상세 ↔ 통합 흐름판 (같은 페이지 섹션 분리)
+if(location.hash==='#flow'){ setTimeout(function(){ var b=document.querySelector('.vbtn[data-v="flow"]'); if(b) b.click(); },0); }   // 통합보드에서 '통합 흐름판' 메뉴로 직접 진입 (지니 08-20)
 document.querySelectorAll('.vbtn').forEach(function(b){
   b.addEventListener('click',function(){
     document.querySelectorAll('.vbtn').forEach(function(x){x.classList.remove('on')});
