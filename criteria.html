@@ -51,7 +51,7 @@ ul{margin:4px 0 0 18px;padding:0}
 <tr><td><b>시즌 커버(주)</b></td><td>가용재고 ÷ 남은 시즌 주평균 예상판매 — 12주 미만 빨강·16주 미만 노랑 (참고치, 회사 재고일수 공식과 다름)</td></tr></table></div>
 
 <div class="box" style="border-left-color:var(--gn)"><h2>4. 회사 공식 그대로 쓰는 지표 (판이 새로 정의하지 않음)</h2>
-<ul><li><b>판매율(소진율)</b> = 소진재고액 ÷ (소진재고액 + 잔여재고액)</li><li><b>매총율</b> = 1 − (매출원가 − 환입) ÷ (총매출 ÷ 1.1)</li><li><b>재고일수</b> = 365 ÷ [(누적소진 ÷ 월별비중) ÷ 평균재고]</li><li><b>정판율</b> = 정상판매 ÷ 총입고(둘 다 정상가)</li></ul>
+<ul><li><b>판매율(소진율)</b> = 소진재고액 ÷ (소진재고액 + 잔여재고액)</li><li><b>매총율</b> = 1 − (매출원가 − 환입) ÷ (총매출 ÷ 1.1)</li><li><b>재고일수</b> = 현재재고 × 경과일수(연초~기준일) ÷ 누적소진</li><li><b>정판율</b> = 정상판매 ÷ 총입고(둘 다 정상가)</li></ul>
 <p class="src" style="margin:8px 0 0">설정값 위치: <code>_판_수지시뮬.py</code> DOM_TOT 4 / IMP_TOT 12 / BACK(IN-LAND 2·OCEAN 10·AIR 6) / LOGI2STORE 2 / DISP_WKS 2 / SEASON_SELL_TGT 0.90 / PLC_EVENT_Q 1.8 · PLC_EVENT_ASP 0.85 · PLC_MIN_N 300 · 과잉 1.6 — 회의에서 바꾸면 숫자만 교체</p></div>
 <p class="src">갱신 2026-08-19 · 이 장은 판정 로직의 설명이며, 임계값(1.6배·2주 진열선·12/16주 커버 등) 자체의 타당성은 원팀 합의 사항.</p>
 </div></body></html>
