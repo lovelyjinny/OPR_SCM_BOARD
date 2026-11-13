@@ -1,0 +1,58 @@
+{
+ "board": "scm-board",
+ "stage": 3,
+ "unit": "장",
+ "asof": "2026-11-13",
+ "generated": "2026-11-13 23:17:24",
+ "source": "재고 11/13 07:51 · 발주 11/13 13:29",
+ "key": [
+  {
+   "name": "매입 필요 아이템",
+   "value": 2,
+   "unit": "개",
+   "text": "2개"
+  },
+  {
+   "name": "필업 아이템",
+   "value": 20,
+   "unit": "개",
+   "text": "20개"
+  },
+  {
+   "name": "과잉 아이템",
+   "value": 22,
+   "unit": "개",
+   "text": "22개"
+  }
+ ],
+ "blocked": [
+  {
+   "what": "퍼/무스탕 매입 8,225장 — 국내 마감 지남(즉시)",
+   "size": 8225,
+   "unit": "장",
+   "size_text": "8,225장",
+   "deadline": "2026-10-21"
+  },
+  {
+   "what": "PK티 매입 711장 — 국내 마감 27년1월2주",
+   "size": 711,
+   "unit": "장",
+   "size_text": "711장",
+   "deadline": "2027-01-14"
+  },
+  {
+   "what": "여성 펀드 929 M 부족 — 재무 펀드 추가 요청 필요",
+   "size": 929,
+   "unit": "M",
+   "size_text": "929M",
+   "deadline": null
+  },
+  {
+   "what": "남성 펀드 329 M 부족 — 재무 펀드 추가 요청 필요",
+   "size": 329,
+   "unit": "M",
+   "size_text": "329M",
+   "deadline": null
+  }
+ ]
+}
