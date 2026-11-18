@@ -3,26 +3,26 @@
  "stage": 3,
  "unit": "장",
  "asof": "2026-11-18",
- "generated": "2026-11-18 12:40:32",
+ "generated": "2026-11-18 13:13:45",
  "source": "재고 11/18 08:15 · 발주 11/16 10:36",
  "key": [
   {
    "name": "매입 필요 아이템",
-   "value": 1,
+   "value": 2,
    "unit": "개",
-   "text": "1개"
+   "text": "2개"
   },
   {
    "name": "필업 아이템",
-   "value": 21,
+   "value": 19,
    "unit": "개",
-   "text": "21개"
+   "text": "19개"
   },
   {
    "name": "과잉 아이템",
-   "value": 21,
+   "value": 22,
    "unit": "개",
-   "text": "21개"
+   "text": "22개"
   }
  ],
  "blocked": [
@@ -34,10 +34,17 @@
    "deadline": "2026-10-28"
   },
   {
-   "what": "여성 펀드 890 M 부족 — 재무 펀드 추가 요청 필요",
-   "size": 890,
+   "what": "PK티 매입 705장 — 국내 마감 27년1월2주",
+   "size": 705,
+   "unit": "장",
+   "size_text": "705장",
+   "deadline": "2027-01-14"
+  },
+  {
+   "what": "여성 펀드 901 M 부족 — 재무 펀드 추가 요청 필요",
+   "size": 901,
    "unit": "M",
-   "size_text": "890M",
+   "size_text": "901M",
    "deadline": null
   },
   {
